@@ -300,6 +300,10 @@ section {
 
 .about-img img {
     width: 100%;
+    height: auto;
+    /* Maintain aspect ratio */
+    display: block;
+    /* Remove bottom space */
     border-radius: 15px;
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
 }
@@ -423,10 +427,14 @@ section {
     transition: all 0.4s ease;
     border: 1px solid rgba(255, 255, 255, 0.05);
     backdrop-filter: blur(10px);
+    /* Fix for border-radius clipping on mobile */
+    transform: translateZ(0);
+    -webkit-transform: translateZ(0);
 }
 
 .project-card:hover {
-    transform: translateY(-15px);
+    transform: translateY(-15px) translateZ(0);
+    /* Maintain translateZ on hover */
     box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
     border-color: rgba(255, 255, 255, 0.2);
 }
@@ -436,6 +444,8 @@ section {
     height: 280px;
     object-fit: cover;
     transition: transform 0.5s ease;
+    display: block;
+    /* Removes bottom space */
 }
 
 .project-card:hover img {
